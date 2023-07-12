@@ -1,11 +1,12 @@
 const connectToMongo = require('./db');
 connectToMongo();
 const express = require('express')
+var cors= require('cors');
 const app = express()
 const port = 5000
 
 app.use(express.json()) // this middlewere is used if we wanto accesss the body of json on hitting endpoint
-
+app.use(cors())
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
