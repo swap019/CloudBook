@@ -17,10 +17,10 @@ const Logindo = () => {
       body: JSON.stringify({email:credentials.email,password: credentials.password})
     });
     const json= await response.json();
-    console.log(json);
+    console.log(json.authToken);
     if(json.success){
       //redirect ans save the auth token;
-      localStorage.setItem('token',json.authtoken);
+      localStorage.setItem('token', json.authToken);
       window.location.href = "/";
     }
     else{

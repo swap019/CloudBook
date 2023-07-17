@@ -2,6 +2,10 @@ import React, { useEffect } from 'react'
 import { Link, useLocation } from "react-router-dom"
 const Navbar = () => {
   let location = useLocation();
+  const handleLogout =()=>{
+    localStorage.removeItem('token');
+    window.location.href="/login"
+  }
   //used to get location
   useEffect(() => {
   }, [location])
@@ -33,8 +37,12 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="d-flex ">
-            <Link class="btn btn-primary mx-2" to="/login" role="button">Log In</Link>
-            <Link class="btn btn-primary mx-2" to="/signup" role="button">Sign Up</Link>
+            {
+              !localStorage.getItem('token')?<form className='d-flex'>
+              <Link className="btn btn-primary mx-2" to="/login" role="button">Log In</Link>
+            <Link className="btn btn-primary mx-2" to="/signup" role="button">Sign Up</Link>
+            </form>:<button className="btn btn-primary mx-2" onClick={handleLogout}> Log Out</button>
+            }
           </div>
         </div>
       </div>

@@ -8,7 +8,12 @@ const Notes = () => {
   const { notes, getNotes, editNote } = context;
   
   useEffect(() => {
-    getNotes();
+    if(localStorage.getItem('token')){
+      getNotes();
+    }
+    else{
+      window.location.href='/login';
+    }
   }, []);
 
   const ref = useRef(null);

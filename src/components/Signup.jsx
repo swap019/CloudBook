@@ -20,8 +20,8 @@ const Signup = () => {
     console.log(json);
     if (json.success) {
       //redirect ans save the auth token;
-      localStorage.setItem('token', json.authtoken);
-      window.location.href = "/";
+      localStorage.setItem('token', json.authToken);
+      window.location.href = "/home";
     }
     else {
       alert("Invalid Credentials");
