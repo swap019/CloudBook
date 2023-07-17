@@ -6,8 +6,9 @@ const Addnote = () => {
     const handleClick=(e)=>{
         e.preventDefault();
         addNote(note.title, note.desc, note.tag);
+        setNote({title:"",desc:"",tag:""});
     }
-    const [note,setNote] = useState({title:"",desc:"",tag:"default"});
+    const [note,setNote] = useState({title:"",desc:"",tag:""});
     const onChange=(e)=>{
         setNote({...note,[e.target.name]:e.target.value})
     }
@@ -17,18 +18,18 @@ const Addnote = () => {
             <form>
                 <div className="mb-3">
                     <label htmlFor="tile" className="form-label">Title</label>
-                    <input type="text" className="form-control" id="tile" name="title" aria-describedby="emailHelp" onChange={onChange}/>
+                    <input type="text" className="form-control" id="tile" name="title" value={note.title} aria-describedby="emailHelp" onChange={onChange}/>
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div className="md-3">
                     <label htmlFor="desc" className="form-label">Description</label>
-                    <input type="text" className="form-control" id="desc" name="desc" onChange={onChange} />
+                    <textarea type="text" className="form-control" id="desc" name="desc" value={note.desc} onChange={onChange} />
                 </div>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
+                <div className="mb-3">
+                    <label htmlFor="tile" className="form-label">Tags</label>
+                    <input type="text" className="form-control" id="tag" name="tag" value={note.tag} aria-describedby="emailHelp" onChange={onChange}/>
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
+                <button  type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
             </form>
         </div>
     )
